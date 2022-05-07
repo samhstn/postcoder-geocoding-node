@@ -143,7 +143,7 @@ describe('AlliesGeocoding', function() {
 
             geocoding.init();
 
-            geocoding.checkStatus( function(result, error) {
+            geocoding.checkStatus( function(error, result) {
 
                 assert.equal(typeof result, "object");
                 assert.equal(error, false);
@@ -162,7 +162,7 @@ describe('AlliesGeocoding', function() {
 
             geocoding.init();
 
-            geocoding.checkStatus( function(result, error) {
+            geocoding.checkStatus( function(error, result) {
 
                 assert.equal(result.state, "Test Key");
                 assert.equal(result.correctsearchkey, true);
@@ -179,7 +179,7 @@ describe('AlliesGeocoding', function() {
 
             geocoding.init("rsetghtdejgkfk");
 
-            geocoding.checkStatus( function(result, error) {
+            geocoding.checkStatus( function(error, result) {
 
                 assert.equal(result.state, "Incorrect Search Key");
                 assert.equal(result.correctsearchkey, false);
@@ -200,7 +200,7 @@ describe('AlliesGeocoding', function() {
 
             geocoding.init();
 
-            geocoding.geoFromPostcode("NR14 7PZ", function(result, error) {
+            geocoding.geoFromPostcode("NR14 7PZ", function(error, result) {
 
                 assert.equal(Array.isArray(result), true);
                 assert.equal(result.length == 1, true);
@@ -219,7 +219,7 @@ describe('AlliesGeocoding', function() {
 
             geocoding.init();
 
-            geocoding.geoFromPostcode("", function(result, error) {
+            geocoding.geoFromPostcode("", function(error, result) {
 
                 assert.equal(Array.isArray(result), true);
                 assert.equal(result.length, 0);
@@ -240,7 +240,7 @@ describe('AlliesGeocoding', function() {
 
             geocoding.init();
 
-            geocoding.searchStreetGeo("NR14 7PZ", function(result, error) {
+            geocoding.searchStreetGeo("NR14 7PZ", function(error, result) {
 
                 assert.equal(Array.isArray(result), true);
                 assert.equal(result.length == 1, true);
@@ -257,7 +257,7 @@ describe('AlliesGeocoding', function() {
 
             geocoding.init();
 
-            geocoding.searchStreetGeo("", function(result, error) {
+            geocoding.searchStreetGeo("", function(error, result) {
 
                 assert.equal(Array.isArray(result), true);
                 assert.equal(result.length, 0);
@@ -274,7 +274,7 @@ describe('AlliesGeocoding', function() {
 
             geocoding.init();
 
-            geocoding.searchStreetGeo("NR14 7PZ", function(result, error) {
+            geocoding.searchStreetGeo("NR14 7PZ", function(error, result) {
 
                 assert.equal(Array.isArray(result), true);
                 assert.equal(result.length == 1, true);

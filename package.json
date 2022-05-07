@@ -1,6 +1,6 @@
 {
   "name": "postcoder-geocoding",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Node package to simplify the use of the Postcoder API from Allies, which offers several UK geocoding API endpoints.",
   "main": "index.js",
   "homepage": "https://postcoder.com/address-lookup",

@@ -25,7 +25,7 @@ const geocoding = require('postcoder-geocoding');
 
 geocoding.init('[YOUR API KEY HERE]');
 
-geocoding.geoFromPostcode('NR14 7PZ', (result, error) => {
+geocoding.geoFromPostcode('NR14 7PZ', (error, result) => {
 
     if (error) {
         console.log(error);
@@ -46,7 +46,7 @@ const geocoding = require('postcoder-geocoding');
 
 geocoding.init('[YOUR API KEY HERE]');
 
-geocoding.searchStreetGeo('NR14 7PZ', (result, error) => {
+geocoding.searchStreetGeo('NR14 7PZ', (error, result) => {
 
     if (error) {
         console.log(error);
@@ -74,7 +74,7 @@ geocoding.streetFromGeo(
   '52.5859714116',
   '1.3492192897',
   '50',
-  (result, error) => {
+  (error, result) => {
 
     if (error) {
         console.log(error);
@@ -98,7 +98,7 @@ const geocoding = require('postcoder-geocoding');
 
 geocoding.init('[YOUR API KEY HERE]');
 
-geocoding.checkStatus((result, error) => {
+geocoding.checkStatus((error, result) => {
 
     if (error) {
         console.log(error);
