@@ -14,7 +14,7 @@ The API allows searching for forward and reverse UK geocoding.
 
 ## Install
 
-`npm install postcoder-geocoding`
+`npm install samhstn/postcoder-geocoding-node`
 
 [https://www.npmjs.com/package/postcoder-geocoding](https://www.npmjs.com/package/postcoder-geocoding)
 
