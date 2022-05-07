@@ -1,3 +1,5 @@
+![CI](https://github.com/samhstn/postcoder-geocoding-node/workflows/CI/badge.svg?branch=main&event=push)
+
 # Postcoder geocoding
 
 Simple node wrapper for geocoding endpoints of the Postcoder API from Allies.
