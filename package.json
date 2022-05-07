@@ -5,11 +5,11 @@
   "main": "index.js",
   "homepage": "https://postcoder.com/address-lookup",
   "scripts": {
+    "lint": "eslint index.js",
     "test": "nyc --reporter=html --reporter=text mocha"
   },
   "author": "Stephen Keable (https://www.stephenkeable.co.uk)",
   "license": "ISC",
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/stephenkeable/postcoder-geocoding-node.git"
@@ -18,10 +18,10 @@
     "url": "https://github.com/stephenkeable/postcoder-geocoding-node/issues"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "mocha": "^3.5.0",
-    "nyc": "^15.0.1"
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0"
   }
 }
