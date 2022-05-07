@@ -213,6 +213,25 @@ describe('AlliesGeocoding', function() {
 
         });
 
+        it("Should return a promise if no callback argument", function(done) {
+
+            var geocoding = require("../");
+
+            geocoding.init();
+
+            geocoding.geoFromPostcode("NR14 7PZ")
+                .then((result) => {
+                  assert.equal(Array.isArray(result), true);
+                  assert.equal(result.length == 1, true);
+                  assert.equal(result[0].latitude != 'undefined', true);
+                  assert.equal(result[0].longitude != 'undefined', true);
+
+                  done();
+
+                });
+
+        });
+
         it("Should return empty array with blank search parameter", function(done) {
 
             var geocoding = require("../");

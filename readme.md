@@ -111,6 +111,18 @@ geocoding.checkStatus((error, result) => {
 });
 ```
 
+### Promises are also supported if no callback is supplied
+
+```javascript
+const geocoding = require('postcoder-geocoding');
+
+geocoding.init('[YOUR API KEY HERE]');
+
+geocoding.geoFromPostcode('NR14 7PZ')
+    .then((result) => {
+        ...
+```
+
 ### Note about support
 
 This is a community supported package, maintained by [Stephen Keable](https://github.com/stephenkeable)

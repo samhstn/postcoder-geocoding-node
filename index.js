@@ -53,7 +53,7 @@ class AlliesGeocoding {
   /*
   Internal helper functions
   */
-  static sendRequest(requestUrl, callback) {
+  static sendRequestCb(requestUrl, callback) {
     https.get(requestUrl, (response) => {
       const data = [];
       response.on('data', (chunk) => {
@@ -76,6 +76,21 @@ class AlliesGeocoding {
         error_body: e,
       };
       return callback(errorResponse, false);
+    });
+  }
+
+  static sendRequest(requestUrl, callback) {
+    if (callback) {
+      return AlliesGeocoding.sendRequestCb(requestUrl, callback);
+    }
+    return new Promise((resolve, reject) => {
+      AlliesGeocoding.sendRequestCb(requestUrl, (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
+        }
+      });
     });
   }
 
@@ -116,7 +131,7 @@ class AlliesGeocoding {
   */
   checkStatus(callback) {
     const requestUrl = `${this.config.urlBase}${this.config.apiKey}/status`;
-    AlliesGeocoding.sendRequest(requestUrl, (error, result) => callback(error, result));
+    return AlliesGeocoding.sendRequest(requestUrl, callback);
   }
 
   /*
@@ -124,7 +139,7 @@ class AlliesGeocoding {
   */
   geoFromPostcode(search, callback) {
     const requestUrl = `${this.config.urlBase}${this.config.apiKey}/position/UK/${encodeURIComponent(search)}?${AlliesGeocoding.queryString(this.config.options)}`;
-    AlliesGeocoding.sendRequest(requestUrl, (error, result) => callback(error, result));
+    return AlliesGeocoding.sendRequest(requestUrl, callback);
   }
 
   /*
@@ -132,7 +147,7 @@ class AlliesGeocoding {
   */
   searchStreetGeo(search, callback) {
     const requestUrl = `${this.config.urlBase}${this.config.apiKey}/geo/UK/${encodeURIComponent(search)}?${AlliesGeocoding.queryString(this.config.options)}`;
-    AlliesGeocoding.sendRequest(requestUrl, (error, result) => callback(error, result));
+    return AlliesGeocoding.sendRequest(requestUrl, callback);
   }
 
   /*
@@ -146,14 +161,16 @@ class AlliesGeocoding {
     if (AlliesGeocoding.trimCheck(latitude) !== false
       && AlliesGeocoding.trimCheck(longitude) !== false) {
       const requestUrl = `${this.config.urlBase}${this.config.apiKey}/rgeo/UK/${encodeURIComponent(theLatitude)}/${encodeURIComponent(theLongitude)}?distance=${encodeURIComponent(theRadius)}&${AlliesGeocoding.queryString(this.config.options)}`;
-      AlliesGeocoding.sendRequest(requestUrl, (error, result) => callback(error, result));
-      return true;
+      return AlliesGeocoding.sendRequest(requestUrl, callback);
     }
     const errorResponse = {
       http_status: 404,
       error_body: 'No latitude or/and longitude parameter supplied',
     };
-    return callback(errorResponse, false);
+    if (callback) {
+      return callback(errorResponse, false);
+    }
+    return Promise.reject(errorResponse);
   }
 }
 
